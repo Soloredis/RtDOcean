@@ -24,7 +24,7 @@ namespace RtDOcean
 
         public const string PluginName = "RtDOcean";
 
-        public const string PluginVersion = "2.2.39";
+        public const string PluginVersion = "2.2.41";
         
         public AssetBundle MyAssets;
 
