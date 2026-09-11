@@ -15,8 +15,6 @@ namespace RtDOcean
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
     [BepInDependency("com.jotunn.jotunn", BepInDependency.DependencyFlags.HardDependency)]
     [BepInIncompatibility("blacks7ar.SeedBed")]
-    [BepInIncompatibility("randyknapp.mods.epicloot")]
-    [BepInIncompatibility("org.bepinex.plugins.valheim_plus")]
     
     internal partial class OceanPlugin : BaseUnityPlugin 
     {
@@ -24,7 +22,7 @@ namespace RtDOcean
 
         public const string PluginName = "RtDOcean";
 
-        public const string PluginVersion = "2.2.41";
+        public const string PluginVersion = "2.2.44";
         
         public AssetBundle MyAssets;
 
