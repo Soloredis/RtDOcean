@@ -22,7 +22,7 @@ namespace RtDOcean
 
         public const string PluginName = "RtDOcean";
 
-        public const string PluginVersion = "2.2.44";
+        public const string PluginVersion = "2.2.47";
         
         public AssetBundle MyAssets;
 
@@ -33,6 +33,7 @@ namespace RtDOcean
             CreateConfigs();
             LoadBundle();
             AddItems();
+            AddCape();
             AddPrefabs1();
             AddMonsters();
             AddBasicsStatusEffects();
@@ -221,11 +222,17 @@ namespace RtDOcean
             "FishCooked12_RtD",
             // Relic
             "OceanBelt_RtD",
-            "SeaFareCape_RtD",
             "SeaScaleShield_RtD",
             "SeaShardSpear_RtD",
             "SeaShardStaff_RtD",
             "SeaShardWand_RtD"
+        };
+        
+        public string[] CapeList = new string[]
+        {
+
+            // Relic
+            "SeaFareCape_RtD",
         };
 
         public string[] SFXList = new string[]
@@ -2566,6 +2573,32 @@ namespace RtDOcean
             finally
             {
                 PrefabManager.OnPrefabsRegistered -= FixSFX;
+            }
+        }
+        
+        private void AddCape()
+        {
+            try
+            {
+                foreach (string prefabNames in CapeList)
+                {
+                    GameObject prefabs = MyAssets.LoadAsset<GameObject>(prefabNames);
+                    if (prefabs != null)
+                    {
+                        CustomItem customPrefabs = new CustomItem(prefabs, false);
+                        ItemManager.Instance.AddItem(customPrefabs);
+
+                        if (LoggingEnable.Value) { Logger.LogMessage("Added: " + prefabNames + " to the Object database"); }
+                    }
+                    else
+                    {
+                        Logger.LogMessage("Failed to add: " + prefabNames + " to the object database");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogWarning($"Exception caught while adding prefabs: {ex}");
             }
         }
 
