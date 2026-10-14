@@ -22,7 +22,7 @@ namespace RtDOcean
 
         public const string PluginName = "RtDOcean";
 
-        public const string PluginVersion = "2.3.0";
+        public const string PluginVersion = "2.3.1";
         
         public AssetBundle MyAssets;
 
@@ -1709,7 +1709,7 @@ namespace RtDOcean
                 
                 var shrimpBowl = new RecipeConfig
                 {
-                    Item = "Item_Rice_Shrimp_RtD ",
+                    Item = "Item_Rice_Shrimp_RtD",
                     CraftingStation = "Piece_Prep_Table_RtD",
                     MinStationLevel = 1                         
                 };

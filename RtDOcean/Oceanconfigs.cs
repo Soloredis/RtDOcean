@@ -57,14 +57,16 @@ namespace RtDOcean
 
         private void SetupOceanConfigs()
         {
-            int seaweed = 0, foods = 0, monsters = 0;
+            int seaweed = 0, foods = 0, monsters = 0, recipes = 0;
             try { seaweed = SetupSeaweedConfigs(); }
             catch (Exception ex) { Logger.LogWarning($"Exception caught while adding seaweed configs: {ex}"); }
             try { foods = SetupFoodConfigs(); }
             catch (Exception ex) { Logger.LogWarning($"Exception caught while adding food configs: {ex}"); }
             try { monsters = SetupMonsterConfigs(); }
             catch (Exception ex) { Logger.LogWarning($"Exception caught while adding monster configs: {ex}"); }
-            Logger.LogInfo($"Config options added: {seaweed} seaweed entries, {foods} foods, {monsters} monsters.");
+            try { recipes = SetupRecipeConfigs(); }
+            catch (Exception ex) { Logger.LogWarning($"Exception caught while adding recipe configs: {ex}"); }
+            Logger.LogInfo($"Config options added: {seaweed} seaweed entries, {foods} foods, {monsters} monsters, {recipes} recipes.");
         }
 
         private int SetupSeaweedConfigs()
