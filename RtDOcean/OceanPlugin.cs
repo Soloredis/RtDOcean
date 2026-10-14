@@ -22,7 +22,7 @@ namespace RtDOcean
 
         public const string PluginName = "RtDOcean";
 
-        public const string PluginVersion = "2.2.47";
+        public const string PluginVersion = "2.3.0";
         
         public AssetBundle MyAssets;
 
@@ -69,6 +69,7 @@ namespace RtDOcean
             AddSummons();
             OceanClutterSeaWeedConfig();
             OceanClutterSeaShellConfig();
+            SetupOceanConfigs();
             PrefabManager.OnPrefabsRegistered += FixSFX;
             PrefabManager.OnVanillaPrefabsAvailable += EditBoats;
             if (LoggingEnable.Value) { Logger.LogWarning("Logging is enabled in the config."); }
@@ -265,7 +266,9 @@ namespace RtDOcean
             "sfx_dolphin_chatter_RtD",
             "sfx_whale_humpback_RtD",
             "sfx_whale_orca_RtD",
-            "sfx_whale_spermwhale_RtD"
+            "sfx_whale_spermwhale_RtD",
+            "sfx_watercastAOE_RtD_new",
+            "sfx_watercastImpact_RtD_new"
         };
 
         public string[] PrefabList = new string[]
@@ -565,8 +568,8 @@ namespace RtDOcean
         
         public static VegetationConfig MeadowsPlantValues = new VegetationConfig
         {
-            Min = 1.1f,
-            Max = 1.7f,
+            Min = 3.1f,
+            Max = 3.7f,
             ScaleMin = 1.1f,
             ScaleMax = 1.7f,
             MinAltitude = 1f,
@@ -580,14 +583,14 @@ namespace RtDOcean
         
         public static VegetationConfig BlackForestPlantValues = new VegetationConfig
         {
-            Min = 1.1f,
-            Max = 1.7f,
+            Min = 3.1f,
+            Max = 3.7f,
             ScaleMin = 1.1f,
             ScaleMax = 1.7f,
             MinAltitude = 1f,
             MaxAltitude = 250f,
             Biome = Biome.BlackForest,
-            MaxTilt = 20f,
+            MaxTilt = 80f,
             MaxTerrainDelta = 7f,
             GroupSizeMin = 1,
             GroupSizeMax = 2
@@ -595,14 +598,14 @@ namespace RtDOcean
         
         public static VegetationConfig SwampPlantValues = new VegetationConfig
         {
-            Min = 1.1f,
-            Max = 1.7f,
+            Min = 3.5f,
+            Max = 4.3f,
             ScaleMin = 1.1f,
             ScaleMax = 1.7f,
-            MinAltitude = 1f,
+            MinAltitude = 0.6f,
             MaxAltitude = 250f,
             Biome = Biome.Swamp,
-            MaxTilt = 20f,
+            MaxTilt = 80f,
             MaxTerrainDelta = 7f,
             GroupSizeMin = 1,
             GroupSizeMax = 2
@@ -610,14 +613,14 @@ namespace RtDOcean
         
         public static VegetationConfig PlainsPlantValues = new VegetationConfig
         {
-            Min = 1.1f,
-            Max = 1.7f,
+            Min = 3.1f,
+            Max = 3.7f,
             ScaleMin = 1.1f,
             ScaleMax = 1.7f,
             MinAltitude = 1f,
             MaxAltitude = 250f,
             Biome = Biome.Plains,
-            MaxTilt = 20f,
+            MaxTilt = 80f,
             MaxTerrainDelta = 7f,
             GroupSizeMin = 1,
             GroupSizeMax = 2
@@ -625,14 +628,14 @@ namespace RtDOcean
         
         public static VegetationConfig MistlandsPlantValues = new VegetationConfig
         {
-            Min = 1.1f,
-            Max = 1.7f,
+            Min = 3.5f,
+            Max = 4.3f,
             ScaleMin = 1.1f,
             ScaleMax = 1.7f,
             MinAltitude = 1f,
             MaxAltitude = 250f,
             Biome = Biome.Mistlands,
-            MaxTilt = 20f,
+            MaxTilt = 90f,
             MaxTerrainDelta = 7f,
             GroupSizeMin = 1,
             GroupSizeMax = 2
@@ -647,7 +650,7 @@ namespace RtDOcean
             MinAltitude = -150f,
             MaxAltitude = -20f,
             Biome = Biome.Ocean | Biome.Meadows | Biome.BlackForest | Biome.Swamp | Biome.Plains | Biome.AshLands | Biome.DeepNorth,
-            MaxTilt = 20f,
+            MaxTilt = 80f,
             MaxTerrainDelta = 3f,
             GroupSizeMin = 1,
             GroupSizeMax = 2,
